@@ -1,3 +1,5 @@
+#DATABASE CONNECTION WITH TKINTER......
+
 import tkinter as tk
 from tkinter import *
 import mysql.connector
