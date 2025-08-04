@@ -13,12 +13,12 @@ ent_1.grid(row=1,column=2)
 listb= tk.Listbox(root)
 listb.grid(row=2,column=2)
 
-# def create():
-#     name = ent_1.get()
-#     if name :
-#         list1.append(name)
-#     listb.insert(tk.END,name)
-#     ent_1.delete(0,tk.END)
+def create():
+    name = ent_1.get()
+    if name :
+        list1.append(name)
+    listb.insert(tk.END,name)
+    ent_1.delete(0,tk.END)
         
 def update():
     selected = listb.curselection()
@@ -33,13 +33,27 @@ def update():
     else :
         messagebox.showinfo("Updated","select a name and enter a new value")
 
+def delete():
+    selected = listb.curselection()
+
+    if selected:
+        index = selected[0]
+        listb.delete(index)
+        del list1[index]
+        ent_1.delete(0, tk.END)
+    else:
+        messagebox.showinfo("Delete Error", "Please select a name to delete.")
+
+
         
 
-# btn = tk.Button(root,text="Submit",command=create).grid(row=3,column=2)
+btn = tk.Button(root,text="Submit",command=create).grid(row=3,column=2)
 for name in list1 :
     listb.insert(tk.END,name)
 
 btn = tk.Button(root,text="update",command=update).grid(row=4,column=2)
+btn = tk.Button(root,text="delete",command=delete).grid(row=5,column=2)
+
 
 
 root.mainloop()
